@@ -1,8 +1,8 @@
-import { ReactNode, memo } from "react";
+import { memo } from "react";
 import * as Styled from "./Card.styles";
 import { DND_TYPES } from "../constants/dndTypes";
 import { useDrag } from "react-dnd";
-import { ICard, ICardItem } from "../typings/card";
+import { ICard } from "../typings/card";
 
 export type ICardProps = ICard;
 
@@ -18,7 +18,7 @@ export const Card = memo(({ id, title, shortDesc, status }: ICardProps) => {
   return (
     <Styled.Wrapper ref={drag} isDragging={isDragging}>
       <Styled.Title>{title}</Styled.Title>
-      {shortDesc}
+      <p>{shortDesc}</p>
     </Styled.Wrapper>
   );
 });
