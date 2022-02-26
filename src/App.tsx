@@ -25,9 +25,24 @@ function App() {
     }
   };
 
+  const handleDropInReady = (dropedItem: ICardItem) => {
+    const cardData = data.find((card) => card.id === dropedItem.id);
+
+    if (cardData) {
+      setDraftData((actualData) =>
+        actualData.filter((card) => card.id !== dropedItem.id)
+      );
+
+      setData((actualData) => [
+        ...actualData,
+        { ...cardData, status: "READY" },
+      ]);
+    }
+  };
+
   return (
     <Styled.Page>
-      <MainPanel data={data} />
+      <MainPanel data={data} onDrop={handleDropInReady} />
 
       <RightPanel onDrop={handleDropInDraft} data={draftData} />
     </Styled.Page>
