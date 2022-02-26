@@ -1,10 +1,15 @@
 import React from "react";
+import * as Styled from "./App.styles";
+import { RightPanel } from "./RightPanel/RightPanel";
+import { MainPanel } from "./MainPanel/MainPanel";
 
 function App() {
   return (
-    <div className="App">
-      <p>the app</p>
-    </div>
+    <Styled.Page>
+      <MainPanel />
+
+      <RightPanel />
+    </Styled.Page>
   );
 }
 
