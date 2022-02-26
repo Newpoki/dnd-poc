@@ -10,6 +10,7 @@ export const Wrapper = styled.div<{ isOver: boolean }>`
 export const Title = styled.h2`
   text-align: center;
   color: white;
+  margin-bottom: 16px;
 `;
 
 export const CardWrapper = styled.div`

@@ -2,14 +2,14 @@ import { ReactNode, memo } from "react";
 import * as Styled from "./Card.styles";
 import { DND_TYPES } from "../constants/dndTypes";
 import { useDrag } from "react-dnd";
-import { ICard } from "../typings/card";
+import { ICard, ICardItem } from "../typings/card";
 
 export type ICardProps = ICard;
 
-export const Card = memo(({ id, title, shortDesc }: ICardProps) => {
+export const Card = memo(({ id, title, shortDesc, status }: ICardProps) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: DND_TYPES.CARD,
-    item: { id },
+    item: { id, status },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),

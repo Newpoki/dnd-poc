@@ -3,4 +3,10 @@ export type ICard = {
   title: string;
   shortDesc: string;
   desc: string;
+  status: "DRAFT" | "READY";
+};
+
+export type ICardItem = {
+  id: ICard["id"];
+  status: ICard["status"];
 };

@@ -6,18 +6,21 @@ export const MOCKED_CARDS_DATA: Array<ICard> = [
     title: "The card title 1",
     shortDesc: "The card short desc 1",
     desc: "lorem ipsum bla bla",
+    status: "READY",
   },
   {
     id: "2",
     title: "The card title 2",
     shortDesc: "The card short desc 2",
     desc: "lorem ipsum bla bla",
+    status: "READY",
   },
   {
     id: "3",
     title: "The card title 3",
     shortDesc: "The card short desc 3",
     desc: "lorem ipsum bla bla",
+    status: "READY",
   },
   //   {
   //     id: "4",
