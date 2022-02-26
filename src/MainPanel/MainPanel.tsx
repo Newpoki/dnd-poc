@@ -1,49 +1,18 @@
 import * as Styled from "./MainPanel.styles";
 import { Card } from "../components/Card";
+import { ICard } from "../typings/card";
 
-export const MainPanel = () => {
+type IMainPanelProps = {
+  data: Array<ICard>;
+};
+
+export const MainPanel = ({ data }: IMainPanelProps) => {
   return (
     <Styled.Wrapper>
       <Styled.CardList>
-        <Card title="le title">
-          <p>Le contenue de la première carte est huge</p>
-          <p>Attends de voir celui de la deuxième</p>
-        </Card>
-
-        <Card title="le title">
-          <p>Le contenue de la première carte est huge</p>
-          <p>Attends de voir celui de la deuxième</p>
-        </Card>
-
-        <Card title="le title">
-          <p>Le contenue de la première carte est huge</p>
-          <p>Attends de voir celui de la deuxième</p>
-        </Card>
-
-        <Card title="le title">
-          <p>Le contenue de la première carte est huge</p>
-          <p>Attends de voir celui de la deuxième</p>
-        </Card>
-
-        <Card title="le title">
-          <p>Le contenue de la première carte est huge</p>
-          <p>Attends de voir celui de la deuxième</p>
-        </Card>
-
-        <Card title="le title">
-          <p>Le contenue de la première carte est huge</p>
-          <p>Attends de voir celui de la deuxième</p>
-        </Card>
-
-        <Card title="le title">
-          <p>Le contenue de la première carte est huge</p>
-          <p>Attends de voir celui de la deuxième</p>
-        </Card>
-
-        <Card title="le title">
-          <p>Le contenue de la première carte est huge</p>
-          <p>Attends de voir celui de la deuxième</p>
-        </Card>
+        {data.map((cardData) => {
+          return <Card {...cardData} key={cardData.id} />;
+        })}
       </Styled.CardList>
     </Styled.Wrapper>
   );
