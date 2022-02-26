@@ -14,8 +14,6 @@ function App() {
     const cardData = data.find((card) => card.id === dropedItem.id);
 
     if (cardData) {
-      const updatedDraftData = [...draftData, cardData];
-
       setData((actualData) =>
         actualData.filter((card) => card.id !== dropedItem.id)
       );
