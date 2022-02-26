@@ -7,18 +7,18 @@ import { MOCKED_CARDS_DATA } from "./constants/mockedCardsData";
 import { ICard, ICardItem } from "./typings/card";
 
 function App() {
-  const [data, setData] = useState<ICard[]>(MOCKED_CARDS_DATA);
-  const [draftData, setDraftData] = useState<ICard[]>([]);
+  const [readyCards, setReadyCards] = useState<ICard[]>(MOCKED_CARDS_DATA);
+  const [draftCards, setDraftCards] = useState<ICard[]>([]);
 
   const handleDropInDraft = (dropedItem: ICardItem) => {
-    const cardData = data.find((card) => card.id === dropedItem.id);
+    const cardData = readyCards.find((card) => card.id === dropedItem.id);
 
     if (cardData) {
-      setData((actualData) =>
+      setReadyCards((actualData) =>
         actualData.filter((card) => card.id !== dropedItem.id)
       );
 
-      setDraftData((actualData) => [
+      setDraftCards((actualData) => [
         ...actualData,
         { ...cardData, status: "DRAFT" },
       ]);
@@ -26,14 +26,14 @@ function App() {
   };
 
   const handleDropInReady = (dropedItem: ICardItem) => {
-    const cardData = data.find((card) => card.id === dropedItem.id);
+    const cardData = readyCards.find((card) => card.id === dropedItem.id);
 
     if (cardData) {
-      setDraftData((actualData) =>
+      setDraftCards((actualData) =>
         actualData.filter((card) => card.id !== dropedItem.id)
       );
 
-      setData((actualData) => [
+      setReadyCards((actualData) => [
         ...actualData,
         { ...cardData, status: "READY" },
       ]);
@@ -42,9 +42,9 @@ function App() {
 
   return (
     <Styled.Page>
-      <MainPanel data={data} onDrop={handleDropInReady} />
+      <MainPanel data={readyCards} onDrop={handleDropInReady} />
 
-      <RightPanel onDrop={handleDropInDraft} data={draftData} />
+      <RightPanel onDrop={handleDropInDraft} data={draftCards} />
     </Styled.Page>
   );
 }
