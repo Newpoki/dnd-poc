@@ -11,7 +11,7 @@ type IRightPanelProps = {
 };
 
 export const RightPanel = ({ onDrop, data }: IRightPanelProps) => {
-  const [{ isOver, dropedCard, canDrop }, drop] = useDrop(() => ({
+  const [{ isOver, draggedCard, canDrop }, drop] = useDrop(() => ({
     accept: DND_TYPES.CARD,
     drop: (item: ICardItem) => {
       onDrop(item);
@@ -19,7 +19,7 @@ export const RightPanel = ({ onDrop, data }: IRightPanelProps) => {
     collect: (monitor) => {
       return {
         isOver: !!monitor.isOver(),
-        dropedCard: monitor.getItem(),
+        draggedCard: monitor.getItem(),
         canDrop: monitor.canDrop(),
       };
     },
@@ -27,6 +27,8 @@ export const RightPanel = ({ onDrop, data }: IRightPanelProps) => {
       return item.status === "READY";
     },
   }));
+
+  console.log({ draggedCard });
 
   return (
     <Styled.Wrapper ref={drop}>
@@ -40,7 +42,9 @@ export const RightPanel = ({ onDrop, data }: IRightPanelProps) => {
         );
       })}
 
-      {(canDrop || isOver) && <DragOverlay canDrop={canDrop} isOver={isOver} />}
+      {(canDrop || isOver) && draggedCard.status !== "DRAFT" && (
+        <DragOverlay canDrop={canDrop} isOver={isOver} />
+      )}
     </Styled.Wrapper>
   );
 };

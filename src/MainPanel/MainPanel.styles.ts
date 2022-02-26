@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   width: 80%;
   display: flex;
   flex: 1;
+  position: relative;
 `;
 
 export const CardList = styled.div`

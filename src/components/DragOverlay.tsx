@@ -15,6 +15,7 @@ export const DragOverlay = memo(({ canDrop, isOver }: IDragOverlayProps) => {
             borderColor: "rgba(255, 255, 255, 0.7)",
           }
         : {
+            /* This case should never happen as we're not displaying this component when the drag zone is not compatible with the dragged card */
             backgroundColor: "rgba(197, 137, 137, 1)",
             borderColor: "rgba(255, 255, 255, 0.7)",
           };
